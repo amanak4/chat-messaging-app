@@ -8,7 +8,6 @@ import { allUsersRoute, host } from "../utils/APIRoutes";
 import ChatContainer from "./components/ChatContainer";
 import Contacts from "./components/Contacts";
 import Welcome from "./components/Welcome";
-import bgimg from '../assets/chatBG.png'
 import Image from 'next/image';
 export default function Chat() {
   const router = useRouter();
