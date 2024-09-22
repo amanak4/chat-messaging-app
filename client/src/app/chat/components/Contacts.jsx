@@ -46,7 +46,7 @@ export default function Contacts({ contacts, changeChat,groups,setGroups }) {
   useEffect(()=>{
     try{
       const fetchAllUsers = async () => {
-        const { data } = await axios.get("http://localhost:5000/api/auth/allusers/66eabb8949a154a542327716");
+        const { data } = await axios.get("https://chat-messaging-app-2eum.onrender.com/api/auth/allusers/66eabb8949a154a542327716");
         setAllUsers(data);
         console.log("jsjaajaa",data);
       };
@@ -112,10 +112,10 @@ export default function Contacts({ contacts, changeChat,groups,setGroups }) {
     };
     console.log(data);
     try{
-      const response = await axios.post("http://localhost:5000/api/groups/create", data);
+      const response = await axios.post("https://chat-messaging-app-2eum.onrender.com/api/groups/create", data);
     console.log(response);
       
-    const res = await axios.get(`http://localhost:5000/api/groups/allgroups/${userId}`);
+    const res = await axios.get(`https://chat-messaging-app-2eum.onrender.com/api/groups/allgroups/${userId}`);
     toast.success("Group created successfully");
     setGroups(res.data);
     setGroupName('');

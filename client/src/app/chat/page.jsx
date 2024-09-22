@@ -64,7 +64,7 @@ export default function Chat() {
     const fetchGroups = async () => {
       if (currentUser?.isAvatarImageSet) {
         try {
-          const { data } = await axios.get(`http://localhost:5000/api/groups/allgroups/${currentUser._id}`);
+          const { data } = await axios.get(`${host}/api/groups/allgroups/${currentUser._id}`);
         
           setGroups(data);
         } catch (error) {

@@ -21,7 +21,6 @@ export default function Home() {
 
   return (
     <div>
-      {/* You can add any content or message for non-logged-in users here */}
       <p>Redirecting...</p>
     </div>
   );

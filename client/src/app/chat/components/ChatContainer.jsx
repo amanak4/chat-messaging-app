@@ -34,7 +34,7 @@ export default function ChatContainer({ currentChat, socket, currentGroupChat })
     }
 
     try {
-      const response = await axios.get(`http://localhost:5000/api/auth/getuser/${userId}`);
+      const response = await axios.get(`https://chat-messaging-app-2eum.onrender.com/api/auth/getuser/${userId}`);
       const username = response.data.user.username;
 
       // Update cache
@@ -61,7 +61,7 @@ export default function ChatContainer({ currentChat, socket, currentGroupChat })
           to: currentChat._id,
         });
       } else {
-        response = await axios.post("http://localhost:5000/api/groups/messages", {
+        response = await axios.post("https://chat-messaging-app-2eum.onrender.com/api/groups/messages", {
           from: data._id,
           groupId: currentGroupChat._id,
         });
@@ -126,7 +126,7 @@ export default function ChatContainer({ currentChat, socket, currentGroupChat })
         from: data._id,
         msg,
       });
-      await axios.post("http://localhost:5000/api/groups/addmessage", {
+      await axios.post("https://chat-messaging-app-2eum.onrender.com/api/groups/addmessage", {
         from: data._id,
         groupId: currentGroupChat._id,
         message: msg,
