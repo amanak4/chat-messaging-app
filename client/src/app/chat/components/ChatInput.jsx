@@ -8,14 +8,13 @@ import Picker from "emoji-picker-react";
 export default function ChatInput({ handleSendMsg }) {
   const [msg, setMsg] = useState("");
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
-  const emojiPickerRef = useRef(null); // Ref for the emoji picker
-
+  const emojiPickerRef = useRef(null); 
   const handleEmojiPickerhideShow = () => {
     setShowEmojiPicker(!showEmojiPicker);
   };
 
   const handleEmojiClick = (emojiData) => {
-    setMsg((prev) => prev + emojiData.emoji); // Concatenate emoji to the message
+    setMsg((prev) => prev + emojiData.emoji); 
   };
 
   const sendChat = (event) => {
@@ -26,7 +25,6 @@ export default function ChatInput({ handleSendMsg }) {
     }
   };
 
-  // Handle clicks outside the emoji picker
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (emojiPickerRef.current && !emojiPickerRef.current.contains(event.target)) {

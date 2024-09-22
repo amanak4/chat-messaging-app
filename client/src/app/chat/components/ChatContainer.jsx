@@ -9,16 +9,19 @@ import { sendMessageRoute, recieveMessageRoute } from "../../utils/APIRoutes";
 import SearchIcon from "@mui/icons-material/Search";
 import VideocamOutlinedIcon from "@mui/icons-material/VideocamOutlined";
 import { Avatar } from "@mui/material";
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import GroupChatOptions from "./GroupChatOptions";
 // import VideoCall from "./VideoCall";
 export default function ChatContainer({ currentChat, socket, currentGroupChat }) {
   const [messages, setMessages] = useState([]);
-  const [filteredMessages, setFilteredMessages] = useState([]); // State for filtered messages
-  const [searchTerm, setSearchTerm] = useState(""); // State for search input
-  const [isSearchActive, setIsSearchActive] = useState(false); // To toggle search input visibility
+  const [filteredMessages, setFilteredMessages] = useState([]);
+  const [searchTerm, setSearchTerm] = useState(""); 
+  const [isSearchActive, setIsSearchActive] = useState(false);
   const [usersCache, setUsersCache] = useState({});
   const scrollRef = useRef();
   const [arrivalMessage, setArrivalMessage] = useState(null);
   const [userdata, setUserData] = useState(null);
+  const [showMoreOption, setShowMoreOption] = useState(false);
  const searchRef = useRef();
 //  const [isVideoCallActive, setIsVideoCallActive] = useState(false);
 // const roomId = currentChat._id;
@@ -77,7 +80,7 @@ export default function ChatContainer({ currentChat, socket, currentGroupChat })
       );
 
       setMessages(messagesWithUsernames);
-      setFilteredMessages(messagesWithUsernames); // Initialize filteredMessages with all messages
+      setFilteredMessages(messagesWithUsernames);
     };
 
     if (currentChat) fetchMessages();
@@ -98,7 +101,7 @@ export default function ChatContainer({ currentChat, socket, currentGroupChat })
   useEffect(() => {
     if (arrivalMessage) {
       setMessages((prev) => [...prev, arrivalMessage]);
-      setFilteredMessages((prev) => [...prev, arrivalMessage]); // Update filteredMessages too
+      setFilteredMessages((prev) => [...prev, arrivalMessage]);
     }
   }, [arrivalMessage]);
 
@@ -158,6 +161,16 @@ export default function ChatContainer({ currentChat, socket, currentGroupChat })
     };
   }, [searchRef]);
 
+  const handleAddMembers = () => {
+  };
+  const handleDeleteGroup = () => {
+  };
+
+  const handleLeaveGroup = () => {
+  };
+
+
+
   return (
     <Container>
       <div className="chat-header">
@@ -183,6 +196,7 @@ export default function ChatContainer({ currentChat, socket, currentGroupChat })
             sx={{ ":hover": { backgroundColor: "#2b2b2b", borderRadius: "50%" }, cursor: "pointer" }}
             onClick={() => setIsSearchActive(!isSearchActive)}
           />
+          {/* <GroupChatOptions currentGroupChat={currentGroupChat} handleAddMembers={handleAddMembers} handleLeaveGroup={handleLeaveGroup} handleDeleteGroup={handleDeleteGroup} /> */}
         </div>
         {isSearchActive && (
         <div className="search-bar" ref={searchRef}>

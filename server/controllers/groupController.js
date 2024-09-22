@@ -75,3 +75,65 @@ module.exports.getAllGroups = async (req, res, next) => {
     next(ex);
   }
 }
+
+module.exports.addAMemberintoGroup = async (req, res, next) => {
+  try {
+    const { groupId, userId } = req.body;
+    const group = await Group.findById(groupId);
+    if (group) {
+      group.users.push(userId);
+      await group.save();
+      return res.json({ msg: "User added to the group." });
+    } else {
+      return res.json({ msg: "Group not found." });
+    }
+  } catch (ex) {
+    next(ex);
+  }
+}
+
+module.exports.deleteTheGroup = async (req, res, next) => {
+  try {
+    const { groupId } = req.body;
+    const group = await Group.findById(groupId);
+    if (group) {
+      await group.delete();
+      return res.json({ msg: "Group deleted successfully." });
+    } else {
+      return res.json({ msg: "Group not found." });
+    }
+  } catch (ex) {
+    next(ex);
+  }
+}
+
+module.exports.deleteTheMessage = async (req, res, next) => {
+  try {
+    const { messageId } = req.body;
+    const message = await Messages.findById(messageId);
+    if (message) {
+      await message.delete();
+      return res.json({ msg: "Message deleted successfully." });
+    } else {
+      return res.json({ msg: "Message not found." });
+    }
+  } catch (ex) {
+    next(ex);
+  }
+}
+
+module.exports.leaveTheGroup = async (req, res, next) => {
+  try {
+    const { groupId, userId } = req.body;
+    const group = await Group.findById(groupId);
+    if (group) {
+      group.users.pull(userId);
+      await group.save();
+      return res.json({ msg: "User left the group." });
+    } else {
+      return res.json({ msg: "Group not found." });
+    }
+  } catch (ex) {
+    next(ex);
+  }
+}
