@@ -25,7 +25,7 @@ export default function Login() {
     if (localStorage.getItem(process.env.NEXT_PUBLIC_LOCALHOST_KEY)) {
       router.push("/chat");
     }
-  }, []);
+  }, [router]);
 
   const handleChange = (event) => {
     setValues({ ...values, [event.target.name]: event.target.value });
@@ -82,7 +82,7 @@ export default function Login() {
           />
           <button type="submit">Log In</button>
           <span>
-            Don't have an account? <Link href="/register">Create One.</Link>
+            Do not have an account? <Link href="/register">Create One.</Link>
           </span>
         </form>
       </FormContainer>
