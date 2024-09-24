@@ -4,7 +4,7 @@ import plus_icon from './plus.png'
 import question_icon from './question_icon.png'
 import setting_icon from './setting_icon.png'
 import message_icon from './message_icon.png'
-
+import send_icon from './send_icon.png'
 export const assets = {
 
     history_icon,
@@ -12,6 +12,7 @@ export const assets = {
     plus_icon,
     question_icon,
     setting_icon,
-    message_icon
+    message_icon,
+    send_icon
 
 }
